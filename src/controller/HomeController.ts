@@ -2,7 +2,7 @@ import {Controller, Get, Query} from "@nestjs/common";
 import {HomeService} from '../service/HomeService'
 import {LIMIT} from "../constant";
 
-@Controller()
+@Controller('home')
 export class HomeController {
     //引入HomeService在后面调用
     constructor(private readonly service: HomeService) {
