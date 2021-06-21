@@ -1,48 +1,41 @@
-import {
-  Column,
-  CreateDateColumn,
-  DeleteDateColumn,
-  Entity,
-  PrimaryColumn,
-  UpdateDateColumn,
-} from 'typeorm';
-import { OrderDesc } from './OrderDesc';
-import { ORDER_STATUS } from '../constant';
+import {Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryColumn, UpdateDateColumn,} from 'typeorm';
+import {OrderDesc} from './OrderDesc';
+import {ORDER_STATUS} from '../constant';
 
 /**
  * 订单
  */
 @Entity()
 export class Order {
-  @PrimaryColumn()
-  id: string;
+    @PrimaryColumn()
+    id: string;
 
-  @CreateDateColumn()
-  createDateTime: Date;
+    @CreateDateColumn()
+    createDateTime: Date;
 
-  @UpdateDateColumn()
-  updateDateTime: Date;
+    @UpdateDateColumn()
+    updateDateTime: Date;
 
-  @Column({
-    default: ORDER_STATUS.INIT,
-    comment: '0代付款 1 已完成 2取消',
-  })
-  status: number;
+    @Column({
+        default: ORDER_STATUS.INIT,
+        comment: '0代付款 1 已完成 2取消',
+    })
+    status: number;
 
-  @Column({
-    type: 'double',
-    nullable: true,
-  })
-  totalPrice: number;
+    @Column({
+        type: 'double',
+        nullable: true,
+    })
+    totalPrice: number;
 
-  @Column()
-  uid: number;
+    @Column()
+    uid: number;
 
-  @Column()
-  address: string;
+    @Column()
+    address: string;
 
-  @DeleteDateColumn()
-  delDatetime: Date;
+    @DeleteDateColumn()
+    delDatetime: Date;
 
-  orderDesc: OrderDesc[];
+    orderDesc: OrderDesc[];
 }

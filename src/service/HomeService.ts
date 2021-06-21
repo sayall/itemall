@@ -42,19 +42,18 @@ export class HomeService {
     }
 
     //分页查询商品列表
-    async queryGoods(page: number = 1, pageSize: number = LIMIT.PAGE_SIZE, ordersby: string = 'id', sort: string = 'DESC', type: string = 'new'): Promise<object>
-    {
+    async queryGoods(page: number = 1, pageSize: number = LIMIT.PAGE_SIZE, ordersby: string = 'id', sort: string = 'DESC', type: string = 'new'): Promise<object> {
         const skip = (page - 1) * pageSize;
         const goodsCount = await this.goodsRepository.findAndCount({where: {type}})
         const pagesCount = Math.ceil(goodsCount[1] / pageSize);
-        if(pagesCount<page)
+        if (pagesCount < page)
             throw new HttpException('请求页码超过最大页码', HttpStatus.BAD_REQUEST)
         const goods = await this.goodsRepository.find({
             where: {type},
-            order: {[ordersby]:sort},
+            order: {[ordersby]: sort},
             skip,
             take: pageSize
         })
-        return{pagesCount,goods}
+        return {pagesCount, goods}
     }
 }

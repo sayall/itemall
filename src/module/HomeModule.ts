@@ -9,10 +9,10 @@ import {Detail} from "../entity/Detail";
 
 @Module({
     imports: [
-        TypeOrmModule.forFeature([Banner,Recommend,Goods,Detail])
+        TypeOrmModule.forFeature([Banner, Recommend, Goods, Detail])
     ],
     providers: [HomeService],
-    controllers:[HomeController]
+    controllers: [HomeController]
 })
 export class HomeModule {
 }

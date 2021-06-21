@@ -1,25 +1,25 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
 
 /**
  * 订单详情
  */
 @Entity()
 export class OrderDesc {
-  @PrimaryGeneratedColumn()
-  id: number;
+    @PrimaryGeneratedColumn()
+    id: number;
 
-  @Column()
-  oid: string;
+    @Column()
+    oid: string;
 
-  @Column()
-  title: string;
+    @Column()
+    title: string;
 
-  @Column({ type: 'double', name: 'price', nullable: true })
-  price: number | null;
+    @Column({type: 'double', name: 'price', nullable: true})
+    price: number | null;
 
-  @Column({ length: 1000 })
-  img: string;
+    @Column({length: 1000})
+    img: string;
 
-  @Column()
-  num: number;
+    @Column()
+    num: number;
 }

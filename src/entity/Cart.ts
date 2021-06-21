@@ -1,17 +1,4 @@
-import {
-  Column,
-  Entity,
-  JoinColumn,
-  JoinTable,
-  ManyToMany,
-  ManyToOne,
-  OneToMany,
-  OneToOne,
-  PrimaryColumn,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
-import { User } from './User';
-import { Goods } from './Goods';
+import {Column, Entity, PrimaryGeneratedColumn,} from 'typeorm';
 
 /**
  * 购物车
@@ -20,15 +7,15 @@ import { Goods } from './Goods';
  */
 @Entity()
 export class Cart {
-  @PrimaryGeneratedColumn()
-  id: string;
+    @PrimaryGeneratedColumn()
+    id: string;
 
-  @Column()
-  uid: number;
+    @Column()
+    uid: number;
 
-  @Column()
-  gid: number;
+    @Column()
+    gid: number;
 
-  @Column()
-  num: number;
+    @Column()
+    num: number;
 }
