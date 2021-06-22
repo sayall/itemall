@@ -20,6 +20,8 @@ export  const linstenPort = 3000;
 export const ROOTURL = 'http://localhost:'+linstenPort;
 //默认头像
 export const PROPHOTO = '/Profilephoto.jpg';
+//上传文件夹
+export  const updir = '/upload';
 
 /**
  * 订单状态
@@ -29,3 +31,4 @@ export enum ORDER_STATUS {
     FINISH = 1,
     CANCEL = 2,
 }
+
