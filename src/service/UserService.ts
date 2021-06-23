@@ -73,10 +73,35 @@ export class UserService {
         }
         // 删除密码
         delete loginUser.password;
-
-
         return { user: loginUser, token };
 
+    }
+
+    //用户修改
+    async modify(user: User,uid): Promise<string> {
+        // id 转为number
+        if (typeof user.id === 'string') user.id = parseInt(String(user.id));
+        //判断tokenid和修改的id是否一致
+        isUser(uid ,user.id);
+        //判断是否有phone，有则不允许改
+        if ( user.phone )   throw new  BadRequestException('手机号不可修改');
+        //如果提交了图片，则判断图片是否存在
+        if(user.avatar){
+            const avatarPath = join(__dirname, '../../', 'static'+updir,user.avatar)
+            try {
+                // 判断文件是否存在 不存在会抛出异常，捕获异常
+                fs.statSync(avatarPath);
+            } catch (err) {
+                throw new ForbiddenException('头像不存在');
+            }
+        }
+
+        //进行修改操作
+        const { updateDatetime } = await this.userRepository.findOne({id:user.id});
+        const  updateUser: User = await this.userRepository.save(user);
+        //修改后时间有值，意味着修改成功，且两次修改时间不同
+        if(updateUser.updateDatetime && (updateUser.updateDatetime != updateDatetime)) return '修改成功';
+        throw new ForbiddenException('修改失败');
     }
 
 }

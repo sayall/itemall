@@ -13,4 +13,4 @@ import {staticController} from '../controller/staticController';
     ],
     controllers: [staticController],
 })
-export class staticModuleModule {}
+export class staticModule {}

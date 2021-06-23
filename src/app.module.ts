@@ -4,7 +4,8 @@ import {getConnectionOptions} from "typeorm";
 import {HomeModule} from "./module/HomeModule";
 import {CategoryModule} from "./module/CategoryModules";
 import {UserModule} from "./module/UserModule";
-import {staticModuleModule} from "./module/staticModule";
+import {staticModule} from "./module/staticModule";
+import {CartModule} from "./module/CartModule";
 
 @Module({
     imports: [
@@ -14,8 +15,9 @@ import {staticModuleModule} from "./module/staticModule";
         HomeModule,
         CategoryModule,
         UserModule,
+       CartModule,
         //暴露静态资源
-        staticModuleModule
+        staticModule
     ]
 })
 export class AppModule {

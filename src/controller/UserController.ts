@@ -44,4 +44,12 @@ export class UserController {
         return this.service.avatarUpload(avatar)
     }
 
+    //用户修改
+    @Post('modifyUser')
+    @UseGuards(AuthGuard)
+    async modifyUser(@Body() user: User, @Req() req):Promise<string>{
+        return this.service.modify(user,req.auth_user)
+    }
+
+
 }

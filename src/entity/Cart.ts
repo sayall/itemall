@@ -1,4 +1,4 @@
-import {Column, Entity, PrimaryGeneratedColumn,} from 'typeorm';
+import {Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn,} from 'typeorm';
 
 /**
  * 购物车
@@ -18,4 +18,10 @@ export class Cart {
 
     @Column()
     num: number;
+    
+    @CreateDateColumn()
+    createDateTime: Date;
+
+    @UpdateDateColumn()
+    updateDateTime: Date;
 }
