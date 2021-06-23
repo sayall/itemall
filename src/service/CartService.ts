@@ -1,4 +1,4 @@
-import {ForbiddenException, Injectable} from "@nestjs/common";
+import {Injectable} from "@nestjs/common";
 import {Repository} from "typeorm";
 import {InjectRepository} from "@nestjs/typeorm";
 
@@ -26,9 +26,6 @@ export class CartService {
             select: ['gid', 'num'],
             order: {updateDateTime: "DESC"},
         });
-        if (!gid){
-            throw new ForbiddenException('购物车为空');
-        }
         let TotalNum:number = 0;
         for (const item of gid) {
             const goods = await this.goodsRepository.findOne(item.gid);
