@@ -6,6 +6,7 @@ import {CategoryModule} from "./module/CategoryModules";
 import {UserModule} from "./module/UserModule";
 import {staticModule} from "./module/staticModule";
 import {CartModule} from "./module/CartModule";
+import {OrderModule} from "./module/OrderModule";
 
 @Module({
     imports: [
@@ -16,6 +17,7 @@ import {CartModule} from "./module/CartModule";
         CategoryModule,
         UserModule,
        CartModule,
+        OrderModule,
         //暴露静态资源
         staticModule
     ]
